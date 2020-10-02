@@ -9,6 +9,7 @@ def register(request):
         last_name = request.POST['last_name']
         email = "email_"+request.POST['email']
         username = request.POST['email']
+        phone = request.POST['phone']
         password = request.POST['password1']
         cpassword = request.POST['password2']
 
@@ -18,7 +19,7 @@ def register(request):
                 messages.info(request,'Email Taken')
                 return redirect('register')
             else:
-                user = User.objects.create_user(username=username,password=password,email=email,first_name=first_name,last_name=last_name)
+                user = User.objects.create_user(username=username,password=password,email=email,first_name=first_name,last_name=last_name,phone=phone)
                 user.save();
                 print('user created')
                 return redirect('login')
