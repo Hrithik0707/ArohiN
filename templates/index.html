@@ -25,7 +25,7 @@
             <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
    </head>
 
-   <body>
+   <body style="background-color: #FFF1ED;">
        
     <!-- Preloader Start -->
     <div id="preloader-active">
@@ -33,7 +33,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="{% static 'assets/img/logo/logo.png' %}" alt="">
+                    <img src="{% static 'assets/img/logo/logo2.jpg' %}" alt="">
                 </div>
             </div>
         </div>
@@ -56,6 +56,7 @@
                                         <form action="#">
                                             <div class="select-itms">
                                                 <select name="select" id="select1">
+                                                    <option value="">IND</option>
                                                     <option value="">USA</option>
                                                     <option value="">SPN</option>
                                                     <option value="">CDA</option>
@@ -64,9 +65,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <ul class="contact-now">     
-                                        <li>+777 2345 7886</li>
-                                    </ul>
                                 </div>
                                 <div class="header-info-right">
                                    <ul>                                          
@@ -87,7 +85,7 @@
                             <!-- Logo -->
                             <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
                                 <div class="logo">
-                                  <a href="{% static 'index.html' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                                  <a href="{% static 'index.html' %}"><img src="{% static 'assets/img/logo/logo2.jpg' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
@@ -101,12 +99,6 @@
                                                 <ul class="submenu">
                                                     <li><a href="{% static 'product_list.html' %}"> Product list</a></li>
                                                     <li><a href="{% static 'single-product.html' %}"> Product Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="{% static 'blog.html' %}">Blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="{% static 'blog.html' %}">Blog</a></li>
-                                                    <li><a href="{% static 'single-blog.html' %}">Blog Details</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">Pages</a>
@@ -127,14 +119,6 @@
                             </div> 
                             <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
-                                    <li class="d-none d-xl-block">
-                                        <div class="form-box f-right ">
-                                            <input type="text" name="Search" placeholder="Search products">
-                                            <div class="search-icon">
-                                                <i class="fas fa-search special-tag"></i>
-                                            </div>
-                                        </div>
-                                     </li>
                                     <li class=" d-none d-xl-block">
                                         <div class="favorit-items">
                                             <i class="far fa-heart"></i>
@@ -171,17 +155,17 @@
                         <div class="row d-flex align-items-center justify-content-between">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-none d-md-block">
                                 <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                                    <img src="{% static 'assets/img/hero/hero_man.png' %}" alt="">
+                                    <img src="{% static 'assets/img/hero/hero_man4.jpg' %}" alt="">
                                 </div>
                             </div>
                             <div class="col-xl-5 col-lg-5 col-md-5 col-sm-8">
                                 <div class="hero__caption">
-                                    <span data-animation="fadeInRight" data-delay=".4s">60% Discount</span>
-                                    <h1 data-animation="fadeInRight" data-delay=".6s">Winter <br> Collection</h1>
-                                    <p data-animation="fadeInRight" data-delay=".8s">Best Cloth Collection By 2020!</p>
+                                    <h2 data-animation="fadeInRight" data-delay=".4s">Alone we can do so little;</h2>
+                                    <h2 data-animation="fadeInRight" data-delay=".6s">together we can do so much.</h2>
+                                    <p data-animation="fadeInRight" data-delay=".8s">- Helen Keller</p>
                                     <!-- Hero-btn -->
                                     <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-                                        <a href="{% static 'industries.html' %}" class="btn hero-btn">Shop Now</a>
+                                        <a href="{% static 'industries.html' %}" class="btn hero-btn">Know More!</a>
                                     </div>
                                 </div>
                             </div>
