@@ -7,16 +7,14 @@ def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        email = request.POST['email']
-        username = request.POST['username']
+        email = "email_"+request.POST['email']
+        username = request.POST['email']
         password = request.POST['password1']
         cpassword = request.POST['password2']
 
         if password==cpassword:
-            if User.objects.filter(username=username).exists():
-                messages.info(request,'Username Taken')
-                return redirect('register')
-            elif User.objects.filter(email=email).exists():
+            
+            if User.objects.filter(email=email).exists():
                 messages.info(request,'Email Taken')
                 return redirect('register')
             else:
