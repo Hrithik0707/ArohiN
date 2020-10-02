@@ -27,6 +27,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     
     <header>
         <!-- Header Start -->
@@ -149,6 +150,19 @@
                 </div>
             </div>
         </div>
+=======
+    <form action="login" method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="Email"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="submit">
+    </form>
+    <div>
+        {% for message in messages %}
+        <h3> {{message}} </h3>
+        {% endfor %}
+>>>>>>> 67ebe23ca3980c39c7641d58ccbc14714270274e
     </div>
     <!-- slider Area End-->
 
