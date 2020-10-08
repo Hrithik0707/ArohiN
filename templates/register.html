@@ -15,39 +15,22 @@
 <!-- //web font -->
 </head>
 <body>
-<<<<<<< HEAD
-    <form action='register' method='post'>
-        {% csrf_token %}
 
-        <input type="text" name="first_name" placeholder="First Holder"><br>
-        <input type="text" name="last_name" placeholder="Last Holder"><br>
-        <input type="email" name="email" placeholder="Email"><br>
-        <input type="tel" name="phone" placeholder="Phone Number"><br>
-        <input type="password" name="password1" placeholder="Password"><br>
-        <input type="password" name="password2" placeholder="Confirm Password"><br>
-        <input type="submit">
-    </form>
-    <div>
-        {% for message in messages %}
-        <h3> {{message}} </h3>
-        {% endfor %}
-    </div>
-
-
-=======
-<<<<<<< HEAD
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
 		<h1>SignUp</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-				<form action="#" method="post">
-					<input class="text" type="text" name="first_name" placeholder="First name" required=""><br>
-					<input class="text" type="text" name="last_name" placeholder="Last name" required="">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="text" name="phone_number " placeholder="Phone number" required=""><br>
-					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+				<form action='register' method='post'>
+					{% csrf_token %}
+
+					<input type="text" name="first_name" placeholder="First Holder"><br>
+					<input type="text" name="last_name" placeholder="Last Holder"><br>
+					<input type="email" name="email" placeholder="Email"><br>
+					<input type="tel" name="phone_number" placeholder="Phone Number"><br>
+					<input type="text" name="address" placeholder="Address"><br>
+					<input type="password" name="password1" placeholder="Password"><br>
+					<input type="password" name="password2" placeholder="Confirm Password"><br>
 					<div class="wthree-text">
 						<label class="anim">
 							<input type="checkbox" class="checkbox" required="">
@@ -56,6 +39,11 @@
 						<div class="clear"> </div>
 					</div>
 					<input type="submit" value="SIGNUP">
+					<div>
+						{% for message in messages %}
+						<h3> {{message}} </h3>
+						{% endfor %}
+    				</div>
 				</form>
 				<p>Already have an Account? <a href="#"> Login Now!</a></p>
 			</div>
