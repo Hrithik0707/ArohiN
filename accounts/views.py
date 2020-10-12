@@ -1,7 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
-from .models import User
+from .models import User,Product
+from django.http import HttpResponse 
+from .forms import ShopForm
+from django.contrib.auth.decorators import login_required
+from .models import Product
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -59,3 +63,28 @@ def login(request):
 def logout(request):
     auth.logout()
     return redirect('/')
+
+@login_required
+def shop_image_view(request): 
+  
+    if request.method == 'POST': 
+        form = ShopForm(request.POST, request.FILES) 
+        if form.is_valid(): 
+            prod=Product.objects.create(user=request.user,shop_name=form.cleaned_data['shop_name'],product_img=form.cleaned_data['product_img'],shop_address=form.cleaned_data['shop_address'],product_desc=form.cleaned_data['product_desc'],product_name=form.cleaned_data['product_name'],product_rating=form.cleaned_data['product_rating'],product_cost=form.cleaned_data['product_cost'],product_category=form.cleaned_data['product_category'])
+            prod.save()
+            return redirect('shop_images')
+    else: 
+        form = ShopForm() 
+    return render(request, 'postUpload.html', {'form' : form}) 
+  
+  
+def success(request): 
+    return HttpResponse('successfully uploaded') 
+
+def display_shop_images(request): 
+  
+    if request.method == 'GET': 
+  
+        # getting all the objects of hotel. 
+        Shops = Product.objects.all()  
+        return render(request, 'display_shop_images.html',{'shop_images' : Shops})

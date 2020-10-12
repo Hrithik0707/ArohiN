@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from PIL import Image
+from django.conf import settings
 # Create your models here.
 class UserAccountManager(BaseUserManager):
     def create_user(self, phone_number,password=None, **extra_fields):
@@ -51,3 +52,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return str(self.phone_number)
 
+class Product(models.Model):
+    user=models.ForeignKey( User,on_delete=models.CASCADE) 
+    shop_name = models.CharField(max_length=50) 
+    product_img = models.ImageField(upload_to='images/') 
+    shop_address = models.CharField( max_length=100)
+    product_desc = models.TextField()
+    product_rating = models.FloatField()
+    product_cost = models.IntegerField()
+    product_name = models.CharField( max_length=50)
+    product_category = models.CharField( max_length=50)
+
+    def __str__(self):
+        return str(self.product_name)
+
+
+    
+    
+
+    
