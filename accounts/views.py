@@ -3,9 +3,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from .models import User,Product
 from django.http import HttpResponse 
-from .forms import ShopForm
+from .forms import ShopForm,ProfileForm
 from django.contrib.auth.decorators import login_required
-from .models import Product
+from .models import Product,User
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -88,3 +88,16 @@ def display_shop_images(request):
         # getting all the objects of hotel. 
         Shops = Product.objects.all()  
         return render(request, 'display_shop_images.html',{'shop_images' : Shops})
+
+@login_required
+def profile(request):
+    if request.method == 'POST': 
+        print(2)
+        form = ProfileForm(request.POST, request.FILES ,instance=request.user) 
+        if form.is_valid(): 
+            form.save()
+            print(1)
+            return redirect('/')
+    else: 
+        form = ProfileForm(instance=request.user) 
+    return render(request, 'profile.html', {'form' : form}) 

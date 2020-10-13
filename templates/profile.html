@@ -1,0 +1,9 @@
+<form  method="post" enctype="multipart/form-data"> <!-- this line requered, otherwise your form won't take a photo -->
+    {% csrf_token %}
+    <table>
+        {{ form.as_p }}
+    </table>
+
+    <input type="submit" name="update" value="update">
+    <input type="submit" name="cancel" value="cancel">
+</form>

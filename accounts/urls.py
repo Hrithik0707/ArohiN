@@ -13,6 +13,7 @@ urlpatterns=[
     path('upload',views.shop_image_view,name='postUpload'),
     path('success', views.success, name = 'success'),
     path('shop_images', views.display_shop_images, name = 'shop_images'), 
+    path('update', views.profile,name='profile'),
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
