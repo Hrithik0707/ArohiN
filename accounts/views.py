@@ -15,6 +15,7 @@ def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
+        
         email = request.POST['email']
         password = request.POST['password1']
         cpassword = request.POST['password2']
@@ -91,12 +92,10 @@ def display_shop_images(request):
 
 @login_required
 def profile(request):
-    if request.method == 'POST': 
-        print(2)
+    if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES ,instance=request.user) 
         if form.is_valid(): 
             form.save()
-            print(1)
             return redirect('/')
     else: 
         form = ProfileForm(instance=request.user) 
