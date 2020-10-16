@@ -94,9 +94,10 @@ def display_shop_images(request):
 def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES ,instance=request.user) 
+        
         if form.is_valid(): 
             form.save()
             return redirect('/')
     else: 
         form = ProfileForm(instance=request.user) 
-    return render(request, 'profile.html', {'form' : form}) 
+    return render(request, 'ProfileAccount.html', {'form' : form}) 

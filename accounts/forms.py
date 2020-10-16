@@ -10,4 +10,4 @@ class ShopForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
       class Meta:
         model = User
-        fields = ['first_name','last_name','profile_picture','email','address',]
+        fields = ['first_name','last_name','profile_picture','email','address']
