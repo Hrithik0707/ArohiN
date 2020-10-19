@@ -1,12 +1,13 @@
 from django import forms 
 from .models import Product,User
   
+# Form for obtaining product details  
 class ShopForm(forms.ModelForm): 
-  
-    class Meta: 
+      class Meta: 
         model = Product 
-        fields = ['shop_name', 'product_img','shop_address','product_desc','product_cost','product_rating','product_name','product_category'] 
+        fields = ['shop_name', 'product_img','shop_address','product_desc','product_cost','product_name','product_category'] 
 
+# Form for showing profile of user
 class ProfileForm(forms.ModelForm):
       class Meta:
         model = User
