@@ -93,13 +93,10 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>                                                
                                         <ul id="navigation">                                                                                                                                     
-                                            <li><a href="{% static 'index.html' %}">Home</a></li>
+                                            <li><a href="/">Home</a></li>
                                             <li><a href="{% static 'Catagori.html' %}">Catagori</a></li>
-                                            <li class="hot"><a href="#">Latest</a>
-                                                <ul class="submenu">
-                                                    <li><a href="{% static 'product_list.html' %}"> Product list</a></li>
-                                                    <li><a href="{% static 'single-product.html' %}"> Product Details</a></li>
-                                                </ul>
+                                            <li><a href="shop_images">Latest</a>
+                                                
                                             </li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
@@ -131,7 +128,7 @@
                                     </li>
                                    <li class="d-none d-lg-block"> <p class="btn header-btn" onclick="document.getElementById('id01').style.display='block'">Sign in</p></li>
                                    <li class="d-none d-lg-block"> <p class="btn header-btn" onclick="document.getElementById('id02').style.display='block'">Sign up</p></li>
-                                   <li class="d-none d-lg-block"> <a href="{% url 'postUpload'%}" class="btn header-btn">Upload</a></li>
+                                   <li class="d-none d-lg-block"> <a href="upload" class="btn header-btn">Upload</a></li>
                                 </ul>
                             </div>
                             <!-- Mobile Menu -->
@@ -162,7 +159,7 @@
       </div>
   
       <div class="container">
-        <label for="uname"><b>Username</b></label>
+        <label for="uname" style="text-align: center"><b>Username</b></label>
         <br>
         <input type="text" placeholder="Enter Phone Number" name="phone_number" required>
         <br>

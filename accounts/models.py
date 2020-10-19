@@ -59,7 +59,7 @@ class Product(models.Model):
     product_img = models.ImageField(upload_to='images/') 
     shop_address = models.CharField( max_length=100)
     product_desc = models.TextField()
-    product_rating = models.FloatField()
+    product_rating = models.FloatField(null=True,blank=True)
     product_cost = models.IntegerField()
     product_name = models.CharField( max_length=50)
     product_category = models.CharField( max_length=50)
