@@ -56,7 +56,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Product(models.Model):
     user=models.ForeignKey( User,on_delete=models.CASCADE) 
     shop_name = models.CharField(max_length=50) 
-    product_img = models.ImageField(upload_to='images/') 
+    product_img = models.ImageField(upload_to='product_images/') 
     shop_address = models.CharField( max_length=100)
     product_desc = models.TextField()
     product_rating = models.FloatField(null=True,blank=True)
@@ -71,7 +71,7 @@ class Product(models.Model):
 # Category Model - for storing various categories
 class Category(models.Model):
     category_title = models.CharField(max_length=20)
-    category_img = models.ImageField(upload_to='images/')
+    category_img = models.ImageField(upload_to='category_images/')
     products_count = models.IntegerField(null=True,blank=True)
 
 
