@@ -1,27 +1,216 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <title>Hotel Images</title> 
-  
-      <meta name="viewport" content="width=device-width, initial-scale=1"> 
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
-      </script> 
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> 
-      </script> 
-</head> 
-<body> 
-  
-    {% for shop in shop_images %} 
-            <div class="col-md-4"> 
-                
-                    {{ shop.shop_name }}
-                     <img src="{{ shop.product_img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
-                    {{ shop.product_desc }}
-                    {{ shop.product_cost }}
-            </div> 
-    {% endfor %} 
-  
-</body> 
-</html> 
+{%load static%}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Arohin </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+
+  <!-- Favicons -->
+  <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/style1.css' %}" rel="stylesheet">
+<style>
+	.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 0;
+		border-radius: 20%;
+	}
+</style>
+<script src="https://kit.fontawesome.com/af2a6de0b2.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <header>
+        <!-- Header Start -->
+       <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top top-bg d-none d-lg-block">
+                   <div class="container-fluid">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                </div>
+                                <div class="header-info-right">
+                                   <ul>                                          
+                                       <li><a href="update">My Account </a></li>
+                                       <li><a href="{% static 'product_list.html' %}">Wish List  </a></li>
+                                       <li><a href="{% static 'cart.html' %}">Shopping</a></li>
+                                       <li><a href="{% static 'cart.html' %}">Cart</a></li>
+                                       <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
+                                   </ul>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                                <div class="logo">
+                                  <a href="{% static 'index.html' %}"><img src="{% static 'assets/img/logo/logo2.jpg' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>                                                
+                                        <ul id="navigation">                                                                                                                                     
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="categories_page">Catagori</a></li>
+                                            <li><a href="community_page">Latest</a>
+                                                
+                                            </li>
+                                            <li><a href="#">Pages</a>
+                                                <ul class="submenu">
+                                                    <li><a href="{% static 'login.html' %}">Login</a></li>
+                                                    <li><a href="{% static 'cart.html' %}">Card</a></li>
+                                                    <li><a href="{% static 'elements.html' %}">Element</a></li>
+                                                    <li><a href="{% static 'about.html' %}">About</a></li>
+                                                    <li><a href="{% static 'confirmation.html' %}">Confirmation</a></li>
+                                                    <li><a href="{% static 'cart.html' %}">Shopping Cart</a></li>
+                                                    <li><a href="{% static 'checkout.html' %}">Product Checkout</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="{% static 'contact.html' %}">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div> 
+                            <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
+                                <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                                    <li class=" d-none d-xl-block">
+                                        <div class="favorit-items">
+                                            <i class="far fa-heart"></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="shopping-card">
+                                            <a href="{% static 'cart.html' %}"><i class="fas fa-shopping-cart"></i></a>
+                                        </div>
+                                    </li>
+                                   <li class="d-none d-lg-block"> <a href="upload" class="btn header-btn">Upload</a></li>
+                                </ul>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+    <main>
+	  <!-- ======= Services Section ======= -->
+    <section id="service" class="services-mf pt-5 route"style="background:  #F1F0FF; color: black ;">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h1 style="color:black; font-family: 'Monoton', cursive; font-size: 40px;">
+           Latest Product
+              </h1>
+              <br>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="box-shadow-full" style="background :#443266 ">
+        <div class="row">
+
+         {% for shop in shop_images %} 
+          <div class="col-lg-4">
+            <div class="service-box" style="background: #C3C3E5; color:black;">
+              <div class="service-ico">
+                <span class="ico-circle"><img src="{{ shop.product_img.url }}" class="profile-pic"></span>
+              </div>
+              <div class="service-content">
+              	<br>
+                <h2 class="s-title" style=" color:black;"> {{ shop.shop_name }} </h2>
+                <h3 class="s-title" style="color:black;">Rs. {{ shop.product_cost }} </h3> 
+                <p class="s-description text-center"  style="color:black;">
+                        {{ shop.product_desc }}
+                </p> 
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+       </div>
+      </div>
+    </section><!-- End Services Section -->
+    </main>
+     <!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+    <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static './assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static './assets/js/popper.min.js' %}"></script>
+        <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static './assets/js/slick.min.js' %}"></script>
+
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static './assets/js/wow.min.js' %}"></script>
+		<script src="{% static './assets/js/animated.headline.js' %}"></script>
+        <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static './assets/js/contact.js' %}"></script>
+        <script src="{% static './assets/js/jquery.form.js' %}"></script>
+        <script src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static './assets/js/mail-script.js' %}"></script>
+        <script src="{% static './assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static './assets/js/plugins.js' %}"></script>
+        <script src="{% static './assets/js/main.js' %}"></script>
+</body>
+</html>

@@ -3941,8 +3941,8 @@ input:focus {
 /* line 36, ../../SAIFUL/Running_project/250 eCommerce_HTML/250 eCommerce_HTML/250 eCommerce_HTML/assets/scss/_h1-hero.scss */
 .slider-area .hero__img {
   position: relative;
-  bottom: -36px;
-  left: -114px;
+  bottom: 40px;
+  left: 40px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
