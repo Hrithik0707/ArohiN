@@ -29,9 +29,9 @@
 
 			<form method="POST" action="" enctype="multipart/form-data">
 				{% csrf_token %}
-				{% crispy form %}
+				{{ form| crispy }}
 
-			<input class="btn btn-primary" type="submit" name="Update Information">
+			<input type="submit" value="Update">
 			</form>
 		</div>
 	</div>
