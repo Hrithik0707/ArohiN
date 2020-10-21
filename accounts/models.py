@@ -74,6 +74,9 @@ class Category(models.Model):
     category_img = models.ImageField(upload_to='category_images/')
     products_count = models.IntegerField(null=True,blank=True)
 
+    def __str__(self):
+        return str(self.category_title)
+
 
     
     

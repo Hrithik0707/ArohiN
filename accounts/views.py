@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from .models import User,Product
 from django.http import HttpResponse 
-from .forms import ShopForm,ProfileForm
+from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from .models import Product,User,Category
 import datetime
@@ -85,24 +85,26 @@ def logout(request):
 @login_required
 def upload_post(request): 
   
-    if request.method == 'POST': 
-
+    if request.method == 'POST' : 
+        
         # Accepting data from form for adding posts
-        form = ShopForm(request.POST, request.FILES) 
+        shop_name = request.POST['shop_name']
+        product_img = request.FILES['product_img']
+        shop_address = request.POST['shop_address']
+        product_desc = request.POST['product_desc']
+        product_cost = request.POST['product_cost']
+        product_name = request.POST['product_name']
+        product_category = request.POST['product_category']
 
-        # Check - If the form is valid
-        if form.is_valid(): 
+        user_id=str(request.user)
+        # generating product id
+        product_id="post_"+str(datetime.datetime.timestamp(datetime.datetime.now()))+"_"+user_id
 
-            user_id=str(request.user)
-            # generating product id
-            product_id="post_"+str(datetime.datetime.timestamp(datetime.datetime.now()))+"_"+user_id
-
-            prod=Product.objects.create(user=request.user,product_id=product_id,shop_name=form.cleaned_data['shop_name'],product_img=form.cleaned_data['product_img'],shop_address=form.cleaned_data['shop_address'],product_desc=form.cleaned_data['product_desc'],product_name=form.cleaned_data['product_name'],product_cost=form.cleaned_data['product_cost'],product_category=form.cleaned_data['product_category'])
-            prod.save()
-            return redirect('community_page')
+        prod=Product.objects.create(user=request.user,product_id=product_id,shop_name=shop_name,product_img=product_img,shop_address=shop_address,product_desc=product_desc,product_name=product_name,product_cost=product_cost,product_category=product_category)
+        prod.save()
+        return redirect('community_page')
     else: 
-        form = ShopForm() 
-    return render(request, 'postUpload.html', {'form' : form}) 
+        return render(request,'postUpload.html')
   
 # For response denoting success
 def success(request): 

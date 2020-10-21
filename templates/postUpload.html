@@ -5,10 +5,24 @@
     <title>Shop_details</title> 
 </head> 
 <body> 
-    <form method = "post" enctype="multipart/form-data"> 
-        {% csrf_token %} 
-        {{ form.as_p }} 
-        <button type="submit">Upload</button> 
-    </form> 
+    <form action='upload' method='post' enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <input type="text" name="shop_name" placeholder="Shop Name"><br>
+        <label for="img">Select image:</label>
+        <input type="file"  name="product_img" accept="image/*"><br>
+        <input type="text" name="shop_address" placeholder="Shop Address"><br>
+        <input type="text" name="product_desc" placeholder="Product Description"><br>
+        <input type="number" name="product_cost" placeholder="Product Cost"><br>
+        <input type="text" name="product_name" placeholder="Product Name"><br>
+        <input type="text" name="product_category" placeholder="Product Category"><br>
+        
+        <input type="submit" value="Upload">
+        <div>
+            {% for message in messages %}
+            <h3> {{message}} </h3>
+            {% endfor %}
+        </div>
+    </form>
 </body> 
 </html> 
