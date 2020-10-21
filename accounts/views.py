@@ -26,6 +26,7 @@ def register(request):
         cpassword = request.POST['password2']
         address = request.POST['address']
         phone_number = request.POST['phone_number']
+        
 
         # Check - password n confirm password are same
         if password==cpassword:
@@ -78,7 +79,7 @@ def login(request):
 
 # For logging the user out
 def logout(request):
-    auth.logout()
+    auth.logout(request)
     return redirect('/')
 
 # For letting the logged user to upload post
