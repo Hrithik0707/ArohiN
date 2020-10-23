@@ -144,3 +144,10 @@ def profile(request):
     else: 
         form = ProfileForm(instance=request.user) 
     return render(request, 'ProfileAccount.html', {'form' : form}) 
+
+def product_category(request):
+    if request.method == 'GET': 
+  
+        # getting all the posts 
+        Posts = Product.objects.all()  
+        return render(request, 'display_shop_images.html',{'shop_images' : Posts})

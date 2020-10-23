@@ -23,6 +23,9 @@ urlpatterns=[
     path('categories_page', views.category_page, name = 'category_page'),
     # path for proile update page
     path('update', views.profile,name='profile'),
+    # path for category wise products
+    path('product_category', views.product_category,name='product_category')
+
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
