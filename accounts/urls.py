@@ -24,7 +24,9 @@ urlpatterns=[
     # path for proile update page
     path('update', views.profile,name='profile'),
     # path for category wise products
-    path('product_category', views.product_category,name='product_category')
+    path('product_category', views.product_category,name='product_category'),
+    #profile display
+    path('view_profile', views.profile_view,name='profile_view')
 
 ]
 

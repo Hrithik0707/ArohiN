@@ -1,0 +1,430 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Arohin </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+  
+  
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600'>
+
+<!-- CSS here -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+<style>
+  html,body {
+    background: #efefef;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 30px auto 30px;
+  padding: 0 !important;
+  width: 90%;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
+}
+
+.imgdis {
+  background: #eee;
+  background-image: url("{% static 'assets/img/hero/bgimg.jpg' %}");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: red;
+  height: 250px;
+}
+
+.imgdis i {
+  position: relative;
+  cursor: pointer;
+  right: -96%;
+  top: 25px;
+  font-size: 18px !important;
+  color: #fff;
+}
+
+@media (max-width:800px) {
+  header {
+    height: 150px;
+  } 
+  
+  header i {
+    right: -90%;
+  }
+}
+
+main {
+      padding: 20px 20px 0px 20px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+  margin-top: -120px;
+  border-radius: 100px;
+  border: 4px solid #fff;
+}
+
+.active {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  position: absolute;
+  right: calc(50% - 70px);
+  top: 75px;
+  background-color: #FFC107;
+  border: 3px solid #fff;
+}
+
+@media (max-width:990px) {
+  .active {
+    right: calc(50% - 60px);
+    top: 50px;
+  } 
+}
+
+.name {
+  margin-top: 20px;
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-size: 18pt;
+  color: #777;
+}
+
+.info {
+  margin-top: -5px;
+  margin-bottom: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11pt;
+  color: #aaa;
+}
+
+.stats {
+  margin-top: 25px;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ededed;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.number-stat {
+  padding: 0px;
+  font-size: 14pt;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  color: #aaa;
+}
+
+.desc-stat {
+  margin-top: -15px;
+  font-size: 10pt;
+  color: #bbb;
+}
+
+.desc {
+  text-align: center;
+  margin-top: 25px;
+  margin: 25px 40px;
+  color: #999;
+  font-size: 11pt;
+  font-family: "Open Sans";
+  padding-bottom: 25px;
+  border-bottom: 1px solid #ededed;
+}
+
+.social {
+  margin: 5px 0 12px 0;
+  text-align: center;
+  display: inline-block;
+  font-size: 20pt;
+}
+
+.social i {
+  cursor: pointer;
+  margin: 0 15px;
+}
+
+.social i:nth-child(1)  { color: #4267b2; }
+.social i:nth-child(2)  { color: #1da1f2; }
+.social i:nth-child(3)  { color: #bd081c; }
+.social i:nth-child(4)  { color: #36465d; }
+
+.right {
+  padding: 0 25px 0 25px !important;
+}
+
+.nav {
+  display: inline-flex;
+}
+
+.nav li {
+  margin: 40px 30px 0 10px;
+  cursor: pointer;
+  font-size: 13pt;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #888;
+}
+
+.nav li:hover, .nav li:nth-child(1)  { 
+  color: #999;
+  border-bottom: 2px solid #999;
+}
+
+.follow {
+  position: absolute;
+  right: 8%;
+  top: 35px;
+  font-size: 11pt;
+  background-color: #42b1fa;
+  color: #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all .4s;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.follow:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2), 0 0 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width:990px) {
+  .nav {
+    display: none;
+  }
+  
+  .follow {
+    color: white;
+    width: 50%;
+    margin-left: 25%;
+    display: block;
+    position: unset;
+    text-align: center;
+  }
+}
+.gallery  {
+  margin-top: 35px;
+}
+
+.gallery div {
+  margin-bottom: 30px;
+}
+
+.gallery img {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
+  width: auto; 
+  height: auto;
+  cursor: pointer;
+  max-width: 100%;
+}
+</style>
+
+  
+</head>
+
+<body>
+  <header>
+    <!-- Header Start -->
+   <div class="header-area">
+        <div class="main-header ">
+            <div class="header-top top-bg d-none d-lg-block">
+               <div class="container-fluid">
+                   <div class="col-xl-12">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="header-info-left d-flex">
+                            </div>
+                            <div class="header-info-right">
+                               <ul>                                          
+                                   <li><a href="view_profile">My Account </a></li>
+                                   <li><a href="{% static 'product_list.html' %}">Wish List  </a></li>
+                                   <li><a href="{% static 'cart.html' %}">Shopping</a></li>
+                                   <li><a href="{% static 'cart.html' %}">Cart</a></li>
+                                   <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
+                               </ul>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+            </div>
+           <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                            <div class="logo">
+                              <a href="{% static 'index.html' %}"><img src="{% static 'assets/img/logo/logo2.jpg' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>                                                
+                                    <ul id="navigation">                                                                                                                                     
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="categories_page">Catagori</a></li>
+                                        <li><a href="community_page">Latest</a>
+                                            
+                                        </li>
+                                        <li><a href="#">Pages</a>
+                                            <ul class="submenu">
+                                                <li><a href="{% static 'login.html' %}">Login</a></li>
+                                                <li><a href="{% static 'cart.html' %}">Card</a></li>
+                                                <li><a href="{% static 'elements.html' %}">Element</a></li>
+                                                <li><a href="{% static 'about.html' %}">About</a></li>
+                                                <li><a href="{% static 'confirmation.html' %}">Confirmation</a></li>
+                                                <li><a href="{% static 'cart.html' %}">Shopping Cart</a></li>
+                                                <li><a href="{% static 'checkout.html' %}">Product Checkout</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="view_profile">My Account </a></li>
+                                        <li><a href="{% static 'contact.html' %}">Creators</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div> 
+                        <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
+                            <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+            
+                               <li class="d-none d-lg-block"> <a href="view_profile"><i class='far fa-user-circle' style='font-size:48px;color : black;'></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+   </div>
+    <!-- Header End -->
+</header>
+  <div class="container">
+  <div class="imgdis">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </div>
+  <main>
+    <div class="row">
+      <div class="left col-lg-4">
+        <div class="photo-left">
+          <img class="photo" src="{{request.user.profile_picture.url}}"/>
+          <div class="active"></div>
+        </div>
+        <h4 class="name"> {{request.user.first_name}} {{request.user.last_name}} </h4>
+        <p class="info">{{request.user.email}}</p>
+        <p class="info">{{request.user.address}}</p>
+        <div class="stats row">
+          <div class="stat col-xs-4" style="padding-right: 50px;">
+            <p class="number-stat">3,619</p>
+            <p class="desc-stat">Followers</p>
+          </div>
+          <div class="stat col-xs-4">
+            <p class="number-stat">42</p>
+            <p class="desc-stat">Following</p>
+          </div>
+          <div class="stat col-xs-4" style="padding-left: 50px;">
+            <p class="number-stat">38</p>
+            <p class="desc-stat">Uploads</p>
+          </div>
+        </div>
+        
+      </div>
+      <div class="right col-lg-8">
+        <ul class="nav">
+          <li>Gallery</li>
+          <li>Collections</li>
+        </ul>
+        <span class="follow"><a href='update' style="color: white;">Update</a></span>
+        <div class="row gallery">
+          <div class="col-md-4">
+             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774813-photo4.jpg"/>
+          </div>
+          <div class="col-md-4">
+            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo5.jpg"/>
+          </div>
+          <div class="col-md-4">
+             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo6.jpg"/>
+          </div>
+          <div class="col-md-4">
+             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774817-photo1.jpg"/>
+          </div>
+          <div class="col-md-4">
+            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774815-photo2.jpg"/>
+          </div>
+          <div class="col-md-4">
+            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774816-photo3.jpg"/>
+          </div>
+        </div>
+      </div>
+  </main>
+</div>
+  
+		<!-- All JS Custom Plugins Link Here here -->
+    <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static './assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static './assets/js/popper.min.js' %}"></script>
+        <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static './assets/js/slick.min.js' %}"></script>
+
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static './assets/js/wow.min.js' %}"></script>
+		<script src="{% static './assets/js/animated.headline.js' %}"></script>
+        <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static './assets/js/contact.js' %}"></script>
+        <script src="{% static './assets/js/jquery.form.js' %}"></script>
+        <script src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static './assets/js/mail-script.js' %}"></script>
+        <script src="{% static './assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static './assets/js/plugins.js' %}"></script>
+        <script src="{% static './assets/js/main.js' %}"></script>  
+</body>
+</html>
+
+{% endblock %} 

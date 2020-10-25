@@ -140,10 +140,15 @@ def profile(request):
         # Check - If the form is valid
         if form.is_valid(): 
             form.save()
-            return redirect('/')
+            return redirect('/view_profile')
     else: 
         form = ProfileForm(instance=request.user) 
     return render(request, 'ProfileAccount.html', {'form' : form}) 
+
+@login_required
+def profile_view(request):
+    return render(request, 'ProfileAccount2.html') 
+
 
 def product_category(request):
     if request.method == 'GET': 
@@ -151,3 +156,4 @@ def product_category(request):
         # getting all the posts 
         Posts = Product.objects.all()  
         return render(request, 'display_shop_images.html',{'shop_images' : Posts})
+
