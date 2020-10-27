@@ -1,5 +1,6 @@
 {%load static%}
 {% static "images" as baseUrl %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,7 +153,16 @@
               </div>
               <div class="service-content">
               	<br>
-                <h2  class="s-title" style=" color:black;"> {{ category.category_title }} </h2> 
+                
+                <form action="product_category" method="POST">
+                  {% csrf_token %}
+                  
+                  <input type="hidden" value="{{ category.category_title }}" name="product_category"/>
+                  <button type="submit" > {{ category.category_title }} </button>
+                </form>
+
+
+                
               </div>
             </div>
           </div>

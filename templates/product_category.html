@@ -134,9 +134,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="title-box text-center">
-              <h1 style="color:black; font-family: 'Monoton', cursive; font-size: 40px;">
-           Food Product
-              </h1>
+              
               <br>
               <div class="line-mf"></div>
             </div>
@@ -144,7 +142,23 @@
         </div>
         <div class="box-shadow-full" style="background :#443266 ">
         <div class="row">
-
+          {% for shop in shop_images %} 
+          <div class="col-lg-4">
+            <div class="service-box" style="background: #C3C3E5; color:black;">
+              <div class="service-ico">
+                <span class="ico-circle"><img src="{{ shop.product_img.url }}" class="profile-pic"></span>
+              </div>
+              <div class="service-content">
+              	<br>
+                <h2 class="s-title" style=" color:black;"> {{ shop.shop_name }} </h2>
+                <h3 class="s-title" style="color:black;">Rs. {{ shop.product_cost }} </h3> 
+                <p class="s-description text-center"  style="color:black;">
+                        {{ shop.product_desc }}
+                </p> 
+              </div>
+            </div>
+          </div>
+          {% endfor %}
          
 
         </div>

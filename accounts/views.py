@@ -151,9 +151,9 @@ def profile_view(request):
 
 
 def product_category(request):
-    if request.method == 'GET': 
-  
+    if request.method == 'POST': 
+        category=request.POST['product_category']
         # getting all the posts 
-        Posts = Product.objects.all()  
-        return render(request, 'display_shop_images.html',{'shop_images' : Posts})
-
+        Posts = Product.objects.filter(product_category=category)  
+        return render(request, 'product_category.html',{'shop_images' : Posts})
+   
