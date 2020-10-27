@@ -24,7 +24,7 @@
             <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
             <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
    </head>
-
+  
    <body style="max-width:100%;">
        
     <!-- Preloader Start -->
@@ -50,7 +50,9 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left d-flex">
                                 </div>
+                                {% if user.is_authenticated %}
                                 <div class="header-info-right">
+                                    
                                    <ul>                                          
                                        <li><a href="view_profile">My Account </a></li>
                                        <li><a href="{% static 'product_list.html' %}">Wish List  </a></li>
@@ -58,7 +60,9 @@
                                        <li><a href="{% static 'cart.html' %}">Cart</a></li>
                                        <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
                                    </ul>
+                                   
                                 </div>
+                                {% endif %}
                             </div>
                        </div>
                    </div>
@@ -93,7 +97,9 @@
                                                     <li><a href="{% static 'checkout.html' %}">Product Checkout</a></li>
                                                 </ul>
                                             </li>
+                                            {% if user.is_authenticated %}
                                             <li><a href="view_profile">My Account </a></li>
+                                            {% endif %}
                                             <li><a href="{% static 'contact.html' %}">Creators</a></li>
                                         </ul>
                                     </nav>
@@ -101,9 +107,21 @@
                             </div> 
                             <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
-                                   <li class="d-none d-lg-block"> <p class="btn header-btn" onclick="document.getElementById('id01').style.display='block'">Sign in</p></li>
+                                    {% if user.is_authenticated %}
+                                    <div >
+                                    <img width="60" height="50" class="photo" src="{{request.user.profile_picture.url}}"/>
+                                    
+                                    <div class="active"></div>
+                                    </div>
+                                    <li class="d-none d-lg-block"> <a href="upload" class="btn header-btn">Upload</a></li>
+                                    <li class="d-none d-lg-block"> <a href="logout" class="btn header-btn">Logout</a></li>
+                                   
+                                    
+                                    {% else %}
+                                    <li class="d-none d-lg-block"> <p class="btn header-btn" onclick="document.getElementById('id01').style.display='block'">Sign in</p></li>
                                    <li class="d-none d-lg-block"> <p class="btn header-btn" onclick="document.getElementById('id02').style.display='block'">Sign up</p></li>
-                                   <li class="d-none d-lg-block"> <a href="upload" class="btn header-btn">Upload</a></li>
+                                    
+                                   {% endif %} 
                                 </ul>
                             </div>
                             <!-- Mobile Menu -->
