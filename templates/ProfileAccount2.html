@@ -368,24 +368,23 @@ main {
         </ul>
         <span class="follow"><a href='update' style="color: white;">Update</a></span>
         <div class="row gallery">
-          <div class="col-md-4">
-             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774813-photo4.jpg"/>
+          {% for post in posts_user %} 
+          <div class="col-lg-4">
+            <div class="service-box" style="background: #C3C3E5; color:black;">
+              <div class="service-ico">
+                <span class="ico-circle"><img src="{{ post.product_img.url }}" class="profile-pic"></span>
+              </div>
+              <div class="service-content">
+              	<br>
+                <h2 class="s-title" style=" color:black;"> {{ post.shop_name }} </h2>
+                <h3 class="s-title" style="color:black;">Rs. {{ post.product_cost }} </h3> 
+                <p class="s-description text-center"  style="color:black;">
+                        {{ post.product_desc }}
+                </p> 
+              </div>
+            </div>
           </div>
-          <div class="col-md-4">
-            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo5.jpg"/>
-          </div>
-          <div class="col-md-4">
-             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo6.jpg"/>
-          </div>
-          <div class="col-md-4">
-             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774817-photo1.jpg"/>
-          </div>
-          <div class="col-md-4">
-            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774815-photo2.jpg"/>
-          </div>
-          <div class="col-md-4">
-            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774816-photo3.jpg"/>
-          </div>
+          {% endfor %}
         </div>
       </div>
   </main>

@@ -147,7 +147,12 @@ def profile(request):
 
 @login_required
 def profile_view(request):
-    return render(request, 'ProfileAccount2.html') 
+    if request.method == 'GET': 
+  
+        # getting all the categories 
+        posts_user = Product.objects.filter(user=request.user) 
+        return render(request, 'ProfileAccount2.html',{'posts_user': posts_user})
+     
 
 
 def product_category(request):
