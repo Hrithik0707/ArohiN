@@ -104,8 +104,9 @@ def upload_post(request):
         prod=Product.objects.create(user=request.user,product_id=product_id,shop_name=shop_name,product_img=product_img,shop_address=shop_address,product_desc=product_desc,product_name=product_name,product_cost=product_cost,product_category=product_category)
         prod.save()
         return redirect('community_page')
-    else: 
-        return render(request,'postUpload.html')
+    else:
+        Categories = Category.objects.all() 
+        return render(request,'postUpload.html',{'categories' : Categories})
   
 # For response denoting success
 def success(request): 
@@ -160,5 +161,6 @@ def product_category(request):
         category=request.POST['product_category']
         # getting all the posts 
         Posts = Product.objects.filter(product_category=category)  
-        return render(request, 'product_category.html',{'shop_images' : Posts})
+        return render(request, 'product_category.html',{'shop_images' : Posts,'category':category})
+
    

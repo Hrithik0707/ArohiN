@@ -44,12 +44,33 @@
 		max-height:200px;
 		margin: 0 0;
 		border-radius: 20%;
-	}
+  }
+  .service-box:hover{
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05); 
+  
+  }
 </style>
 <script src="https://kit.fontawesome.com/af2a6de0b2.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
+
+  <body style="max-width:100%;">
+       
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/logo2.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
 
     <header>
         <!-- Header Start -->
@@ -61,7 +82,9 @@
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left d-flex">
                                 </div>
+                                {% if user.is_authenticated %}
                                 <div class="header-info-right">
+                                    
                                    <ul>                                          
                                        <li><a href="view_profile">My Account </a></li>
                                        <li><a href="{% static 'product_list.html' %}">Wish List  </a></li>
@@ -69,7 +92,9 @@
                                        <li><a href="{% static 'cart.html' %}">Cart</a></li>
                                        <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
                                    </ul>
+                                   
                                 </div>
+                                {% endif %}
                             </div>
                        </div>
                    </div>
@@ -95,7 +120,7 @@
                                             </li>
                                             <li><a href="#">Pages</a>
                                                 <ul class="submenu">
-                                                    <li><a href="{% static 'login.html' %}">Login</a></li>
+                                                    <li><a href="login">Login</a></li>
                                                     <li><a href="{% static 'cart.html' %}">Card</a></li>
                                                     <li><a href="{% static 'elements.html' %}">Element</a></li>
                                                     <li><a href="{% static 'about.html' %}">About</a></li>
@@ -104,7 +129,9 @@
                                                     <li><a href="{% static 'checkout.html' %}">Product Checkout</a></li>
                                                 </ul>
                                             </li>
+                                            {% if user.is_authenticated %}
                                             <li><a href="view_profile">My Account </a></li>
+                                            {% endif %}
                                             <li><a href="{% static 'contact.html' %}">Creators</a></li>
                                         </ul>
                                     </nav>
@@ -112,7 +139,22 @@
                             </div> 
                             <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
-                                   <li class="d-none d-lg-block"> <a href="upload" class="btn header-btn">Upload</a></li>
+                                    {% if user.is_authenticated %}
+                                    <div >
+                                    <span>
+                                    <a href="view_profile">
+                                    <img width="60" height="60" style="border-radius: 50% ; border: 4px solid gray;;" class="photo" src="{{request.user.profile_picture.url}}"/></a>
+                                    </span>
+                                    </div>
+                                    <li class="d-none d-lg-block"> <a href="upload" class="btn header-btn">Upload</a></li>
+                                    <li class="d-none d-lg-block"> <a href="logout" class="btn header-btn">Logout</a></li>
+                                   
+                                    
+                                    {% else %}
+                                    <li class="d-none d-lg-block"> <a class="btn header-btn" href="login">Sign in</a></li>
+                                    <li class="d-none d-lg-block"> <a class="btn header-btn" href="register">Sign up</a></li>
+                                    
+                                   {% endif %} 
                                 </ul>
                             </div>
                             <!-- Mobile Menu -->
@@ -134,7 +176,9 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="title-box text-center">
-              
+              <h1 style="color:black; font-family: 'Monoton', cursive; font-size: 40px;">
+                {{category}}
+                   </h1>
               <br>
               <div class="line-mf"></div>
             </div>
@@ -143,7 +187,7 @@
         <div class="box-shadow-full" style="background :#443266 ">
         <div class="row">
           {% for shop in shop_images %} 
-          <div class="col-lg-4">
+          <div class="col-lg-3 col-md-6">
             <div class="service-box" style="background: #C3C3E5; color:black;">
               <div class="service-ico">
                 <span class="ico-circle"><img src="{{ shop.product_img.url }}" class="profile-pic"></span>

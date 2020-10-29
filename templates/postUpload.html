@@ -1,28 +1,311 @@
+{%load static%}
+{% static "images" as baseUrl %}
+
 <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8"> 
-    <title>Shop_details</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <title>Upload page</title> 
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+
+    <style>
+        form {border: 3px solid #f1f1f1; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase;}
+        
+        input[type=text], input[type=password],input[type=number],input[type=file]
+        {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+          text-decoration-style: unset;
+        }
+        .headis{
+          padding-top: 5%; 
+          height: 10%;
+          font-size: 40px;
+        }
+        select{
+             width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        
+        button {
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
+        
+        button:hover {
+          opacity: 0.8;
+        }
+        
+        .cancelbtn {
+          width: auto;
+          padding: 10px 18px;
+          background-color: #f44336;
+        }
+        
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+        }
+        
+        img.avatar {
+          width: 40%;
+          border-radius: 50%;
+        }
+        
+        .container {
+          padding: 16px;
+        }
+        
+        span.psw {
+          float: right;
+          padding-top: 16px;
+        }
+        
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+          span.psw {
+             display: block;
+             float: none;
+          }
+          .cancelbtn {
+             width: 100%;
+          }
+        }
+        
+        main{
+          background-color: rgb(213, 230, 246);
+          border: 4px solid black;
+        
+        }
+        .slide-area{
+        height: 300px;
+        
+        }
+        </style>
+
 </head> 
 <body> 
-    <form action='upload' method='post' enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <input type="text" name="shop_name" placeholder="Shop Name"><br>
-        <label for="img">Select image:</label>
-        <input type="file"  name="product_img" accept="image/*"><br>
-        <input type="text" name="shop_address" placeholder="Shop Address"><br>
-        <input type="text" name="product_desc" placeholder="Product Description"><br>
-        <input type="number" name="product_cost" placeholder="Product Cost"><br>
-        <input type="text" name="product_name" placeholder="Product Name"><br>
-        <input type="text" name="product_category" placeholder="Product Category"><br>
-        
-        <input type="submit" value="Upload">
-        <div>
-            {% for message in messages %}
-            <h3> {{message}} </h3>
-            {% endfor %}
+
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/logo2.jpg' %}" alt="">
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top top-bg d-none d-lg-block">
+                   <div class="container-fluid">
+                       <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                </div>
+                                {% if user.is_authenticated %}
+                                <div class="header-info-right">
+                                    
+                                   <ul>                                          
+                                       <li><a href="view_profile">My Account </a></li>
+                                       <li><a href="{% static 'product_list.html' %}">Wish List  </a></li>
+                                       <li><a href="{% static 'cart.html' %}">Shopping</a></li>
+                                       <li><a href="{% static 'cart.html' %}">Cart</a></li>
+                                       <li><a href="{% static 'checkout.html' %}">Checkout</a></li>
+                                   </ul>
+                                   
+                                </div>
+                                {% endif %}
+                            </div>
+                       </div>
+                   </div>
+                </div>
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+                                <div class="logo">
+                                  <a href="{% static 'index.html' %}"><img src="{% static 'assets/img/logo/logo2.jpg' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>                                                
+                                        <ul id="navigation">                                                                                                                                     
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="categories_page">Catagori</a></li>
+                                            <li><a href="community_page">Latest</a>
+                                                
+                                            </li>
+                                            <li><a href="#">Pages</a>
+                                                <ul class="submenu">
+                                                    <li><a href="login">Login</a></li>
+                                                    <li><a href="{% static 'cart.html' %}">Card</a></li>
+                                                    <li><a href="{% static 'elements.html' %}">Element</a></li>
+                                                    <li><a href="{% static 'about.html' %}">About</a></li>
+                                                    <li><a href="{% static 'confirmation.html' %}">Confirmation</a></li>
+                                                    <li><a href="{% static 'cart.html' %}">Shopping Cart</a></li>
+                                                    <li><a href="{% static 'checkout.html' %}">Product Checkout</a></li>
+                                                </ul>
+                                            </li>
+                                            {% if user.is_authenticated %}
+                                            <li><a href="view_profile">My Account </a></li>
+                                            {% endif %}
+                                            <li><a href="{% static 'contact.html' %}">Creators</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div> 
+                            <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
+                                <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+                                    {% if user.is_authenticated %}
+                                    <div >
+                                    <span>
+                                    <a href="view_profile">
+                                    <img width="60" height="60" style="border-radius: 50% ; border: 4px solid gray;" class="photo" src="{{request.user.profile_picture.url}}"/></a>
+                                    </span>
+                                    </div>
+                                    <li class="d-none d-lg-block"> <a href="upload" class="btn header-btn">Upload</a></li>
+                                    <li class="d-none d-lg-block"> <a href="logout" class="btn header-btn">Logout</a></li>
+                                   
+                                    
+                                    {% else %}
+                                    <li class="d-none d-lg-block"> <a class="btn header-btn" href="login">Sign in</a></li>
+                                    <li class="d-none d-lg-block"> <a class="btn header-btn" href="register">Sign up</a></li>
+                                    
+                                   {% endif %} 
+                                </ul>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+
+
+    <main>
+        <!-- slider Area Start-->
+      
+                          <div class="headis text-center">
+                              <h2 style="font-family: monoton ;font-size: 50px;">Product Upload</h2>
+                          </div>
+        
+      <!-- slider Area End-->
+  <form action='upload'class ="modal-content animate"  method='post' enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="container">
+      <label for="shop_name">Shop Name :</label>
+      <input type="text" name="shop_name" placeholder="Shop Name"><br>
+      <label for="product_img">Select Image:</label>
+      <br>
+      <input type="file"  name="product_img" accept="image/*"><br>
+      <label for="shop_address">Shop Address :</label>
+      <input type="text" name="shop_address" placeholder="Shop Address"><br>
+      <label for="product_name">Product Name  :</label>
+      <input type="text" name="product_name" placeholder="Product Name"><br>
+      <label for="product_desc">Product Description :</label>
+      <input type="text" name="product_desc" placeholder="Product Description"><br>
+      <label for="product_cost">Product Cost :</label>
+      <br>
+      <input type="number" name="product_cost" placeholder="Product Cost"><br>
+      
+      <label for = "product_category" > Product Category :</label>
+      <br>
+      <select name="product_category" >
+          {% for category in categories %} 
+          <option>{{ category.category_title }}</option>
+          {% endfor %}
+      </select>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <button type="submit">Upload</button>
+      
+      </div>
+      <div>
+          {% for message in messages %}
+          <h3> {{message}} </h3>
+          {% endfor %}
+      </div>
+  </form>
+  </main>
+  <!-- JS here -->
+	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static './assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static './assets/js/popper.min.js' %}"></script>
+        <script src="{% static './assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static './assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{% static './assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static './assets/js/slick.min.js' %}"></script>
+
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static './assets/js/wow.min.js' %}"></script>
+		<script src="{% static './assets/js/animated.headline.js' %}"></script>
+        <script src="{% static './assets/js/jquery.magnific-popup.js' %}"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="{% static './assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static './assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static './assets/js/jquery.sticky.js' %}"></script>
+        
+        <!-- contact js -->
+        <script src="{% static './assets/js/contact.js' %}"></script>
+        <script src="{% static './assets/js/jquery.form.js' %}"></script>
+        <script src="{% static './assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static './assets/js/mail-script.js' %}"></script>
+        <script src="{% static './assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="{% static './assets/js/plugins.js' %}"></script>
+        <script src="{% static './assets/js/main.js' %}"></script>
 </body> 
 </html> 
