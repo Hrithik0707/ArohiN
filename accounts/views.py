@@ -118,7 +118,7 @@ def community_page(request):
     if request.method == 'GET': 
   
         # getting all the posts 
-        Posts = Product.objects.all()  
+        Posts = Product.objects.order_by('-product_id')[:5]   
         return render(request, 'display_shop_images.html',{'shop_images' : Posts})
 
 # For displaying all the categories
