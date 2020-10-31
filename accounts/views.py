@@ -7,6 +7,9 @@ from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from .models import Product,User,Category
 import datetime
+from django.core.paginator import Paginator
+from django.shortcuts import render
+
 
 
 # Home Page
@@ -118,8 +121,13 @@ def community_page(request):
     if request.method == 'GET': 
   
         # getting all the posts 
-        Posts = Product.objects.order_by('-product_id')[:5]   
-        return render(request, 'display_shop_images.html',{'shop_images' : Posts})
+        Posts = Product.objects.order_by('-product_id')[:5] 
+        paginator = Paginator(Posts, 3) # Show 25 contacts per page.
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)  
+
+        return render(request, 'display_shop_images.html',{'page_obj' : page_obj})
 
 # For displaying all the categories
 def category_page(request): 
