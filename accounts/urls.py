@@ -1,7 +1,9 @@
-from django.urls import path 
+from django.urls import path
+from django.conf.urls import url
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 
 urlpatterns=[
@@ -26,7 +28,11 @@ urlpatterns=[
     # path for category wise products
     path('product_category', views.product_category,name='product_category'),
     #profile display
-    path('view_profile', views.profile_view,name='profile_view')
+    path('view_profile', views.profile_view,name='profile_view'),
+
+    path('Prd/(?P<slug>[^/]+)/$/', views.product_specs.as_view() , name='Prd'),
+
+   
 
 ]
 

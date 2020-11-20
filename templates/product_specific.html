@@ -187,51 +187,31 @@
         <div class="box-shadow-full" style="background :#443266 ">
         <div class="row">
 
-         {% for shop in page_obj %} 
+         
           <div class="col-lg-3 col-md-6">
             <div class="service-box" style="background: #C3C3E5; color:black;">
               <div class="service-ico">
-                <span class="ico-circle">
-                <a href={{ shop.get_url }}>
-                <img src="{{ shop.product_img.url }}" class="profile-pic">
-                </a>
-                </span>
+                <span class="ico-circle"><img src="{{ object.product_img.url }}" class="profile-pic"></span>
               </div>
               
               <div class="service-content">
               	<br>
-                <h2 class="s-title" style=" color:black;"> {{ shop.shop_name }} </h2>
-                <h3 class="s-title" style="color:black;">Rs. {{ shop.product_cost }} </h3> 
+                <h2 class="s-title" style=" color:black;"> {{ object.shop_name |safe }} </h2>
+                <h3 class="s-title" style="color:black;">Rs. {{ object.product_cost |safe}} </h3> 
                 <p class="s-description text-center"  style="color:black;">
-                        {{ shop.product_desc }}
+                        {{ object.product_desc |safe}}
                 </p> 
               </div>
             </div>
           </div>
-          {% endfor %}
+          
         
         
 
         </div>
        </div>
       </div>
-      <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
-
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div>
+      
     </section><!-- End Services Section -->
 
     </main>

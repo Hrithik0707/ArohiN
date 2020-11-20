@@ -5,6 +5,9 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from PIL import Image
 from django.conf import settings
+from django.utils.text import slugify
+from django.shortcuts import reverse
+from django.db.models.signals import pre_save
 
 # For creating User
 class UserAccountManager(BaseUserManager):
@@ -64,19 +67,57 @@ class Product(models.Model):
     product_name = models.CharField( max_length=50)
     product_category = models.CharField( max_length=50)
     product_id = models.CharField(max_length=50,null=True,blank=True)
+    slug = models.SlugField(max_length = 200)
 
     def __str__(self):
         return str(self.product_name)
+
+    """
+    def save(self,*args, **kwargs):
+        super(Product,self).save(*args, **kwargs)
+        self.slug = slugify(self.id)
+        return super(Product,self).save(*args, **kwargs)"""
+
+    def get_url(self):
+        return reverse("Prd",kwargs={'slug':self.slug})
+        
+        
 
 # Category Model - for storing various categories
 class Category(models.Model):
     category_title = models.CharField(max_length=20)
     category_img = models.ImageField(upload_to='category_images/')
     products_count = models.IntegerField(null=True,blank=True)
+    slug = models.SlugField(max_length = 200)
 
     def __str__(self):
         return str(self.category_title)
 
+    def get_url(self):
+        return reverse("Crd",kwargs={'slug':self.slug})
+
+def pre_save_post_receiver(sender,instance, *args, **kwargs):
+    slug = slugify(instance.id)
+    exists = Product.objects.filter(slug=slug).exists()
+
+    if exists:
+        slug = "%s-%s" %(slug,instance.id)
+
+    instance.slug=slug
+"""
+def pre_save_categ_receiver(sender,instance, *args, **kwargs):
+    slug = slugify(instance.id)
+    exists = Category.objects.filter(slug=slug).exists()
+
+    if exists:
+        slug = "%s-%s" %(slug,instance.id)
+
+    instance.slug=slug
+    """
+
+
+pre_save.connect(pre_save_post_receiver,sender=Product)
+#pre_save.connect(pre_save_categ_receiver,sender=Category)
 
     
     

@@ -9,6 +9,7 @@ from .models import Product,User,Category
 import datetime
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.views.generic import DetailView,ListView
 
 
 
@@ -137,6 +138,17 @@ def category_page(request):
         # getting all the categories 
         Categories = Category.objects.all()  
         return render(request, 'categories_page.html',{'categories' : Categories})
+"""
+def product_specific(request,slug):
+    
+    if request.method == 'GET':
+
+        product = Product.objects.get(id=slug)
+        return render(request, 'product_specific.html',{'page_obj': product})
+"""
+class product_specs(DetailView):
+    model = Product
+    template_name = 'product_specific.html'
 
 # For letting the logged in user to update his/her profile
 @login_required
@@ -170,5 +182,10 @@ def product_category(request):
         # getting all the posts 
         Posts = Product.objects.filter(product_category=category)  
         return render(request, 'product_category.html',{'shop_images' : Posts,'category':category})
+"""
+    elif request.method == 'GET':
+        product = Product.objects.filter(product_category=slug)
+        return render(request, 'product_category.html',{'page_obj': product})
+        """
 
    
